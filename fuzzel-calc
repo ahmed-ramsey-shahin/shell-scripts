@@ -1,0 +1,17 @@
+#!/bin/bash
+
+ans=0
+
+while true; do
+    # Read input from the user
+    expression=$(fuzzel --mesg "Fuzzel calculator" --width 50 --dmenu -l 0 -p "Calc (ans=$ans): ")
+    # Check if the input is empty
+    if [[ -z "$expression" ]]; then
+        # Quit
+        break
+    fi
+    # Replace any ans by the variable $ans
+    expression=$(echo "scale=3; $expression" | sed "s/ans/$ans/g")
+    # Evaluate the expression
+    ans=$(echo $expression | bc -l)
+done
