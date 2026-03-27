@@ -4,7 +4,7 @@ ans=(0)
 
 while true; do
     # read input from the user
-    expression=$(printf "%s\n" "${ans[@]}" | fuzzel --mesg "fuzzel calculator" --width 50 --dmenu -p "calc (ans=${ans[-1]}): ")
+    expression=$(printf "%s\n" "${ans[@]}" | fuzzel --mesg "fuzzel calculator" -l "${#ans[@]}" --width 50 --dmenu -p "calc (ans=${ans[-1]}): ")
     # check if the input is empty
     if [[ -z "$expression" ]]; then
         # quit
