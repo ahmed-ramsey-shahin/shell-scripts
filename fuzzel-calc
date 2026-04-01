@@ -13,7 +13,7 @@ while true; do
     # replace any ans by the variable $ans
     expression=$(echo "scale=3; $expression" | sed "s/ans/${ans[-1]}/g")
     result=$(echo "$expression" | bc -l 2>&1)
-    if [[ "$result" =~ [Ee]rror ]] || [[ ! "$result" =~ ^-?[0-9]*\.?[0-9]+$ ]] || [[ $result =~ 0 ]]; then
+    if [[ "$result" =~ [Ee]rror ]] || [[ ! "$result" =~ ^-?[0-9]*\.?[0-9]+$ ]] || [[ "$result" =~ ^-?0(\.0+)?$ ]]; then
         continue
     fi
     # evaluate the expression
